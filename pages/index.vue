@@ -1,15 +1,29 @@
 <template>
   <div class="wrapper-content wrapper-content--fixed">
-   <section class="container">
-      <div>Lorem ipsum dolor sit amet consectetur adipisicing elit. Quaerat, corporis!</div>
-   </section>
+    <promo />
+    <intro title="My last posts" />
   </div>
 </template>
-
 <script>
+import promo from "@/components/Promo.vue";
+import intro from "@/components/UI/intro.vue";
 export default {
-  name: "IndexPage",
+  components: {
+    promo,
+    intro,
+  },
 };
 </script>
 
-<style lang="scss"></style>
+<style lang="scss">
+.promo {
+  text-align: center;
+  p {
+    color: #999;
+  }
+}
+
+.wrapper-content {
+  min-height: 80vh;
+}
+</style>
