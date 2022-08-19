@@ -23,7 +23,7 @@ export default {
   margin: 30px 0;
   text-align: center;
   color: #ffffff;
-  background-color: #4b40e3;
+  background-color: #4f68f4;
   h1 {
     font-size: 26px;
   }
