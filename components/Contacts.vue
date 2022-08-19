@@ -42,10 +42,10 @@ export default {
    methods: {
       onSubmit() {
          console.log(this.user);
-         this.message = "Submitted!"
-         this.user.name = ""
-         this.user.email = ""
-         this.user.text = ""
+         this.message = "Submitted!";
+         this.user.name = "";
+         this.user.email = "";
+         this.user.text = "";
       },
    },
 };
