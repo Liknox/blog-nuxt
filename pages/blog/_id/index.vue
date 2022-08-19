@@ -1,23 +1,21 @@
 <template>
    <div class="wrapper-content wrapper-content--fixed">
-      <section class="post">
-         <div class="container">
-            <div class="post-header">
-               <img :src="post.img" :alt="post.title" />
-               <h1 class="title">{{ post.title }}</h1>
-               <p>{{ post.descr }}</p>
-            </div>
-
-            <div class="post-body">
-               <p>{{ post.content }}</p>
-            </div>
-         </div>
-      </section>
+      <post :post="post" />
+      <comments :comments="comments" />
+      <newComment />
    </div>
 </template>
 
 <script>
+import post from "@/components/Blog/Post.vue";
+import newComment from "@/components/Comments/NewComment.vue";
+import comments from "@/components/Comments/Comments.vue";
 export default {
+   components: {
+      post,
+      comments,
+      newComment,
+   },
    data() {
       return {
          post: {
@@ -28,6 +26,10 @@ export default {
                "Lorem ipsum dolor sit amet, consectetur adipiscing elit.Lorem ipsum dolor sit amet, consectetur adipiscing elit.Lorem ipsum dolor sit amet, consectetur adipiscing elit",
             img: "https://images.newscientist.com/wp-content/uploads/2022/02/24145845/SEI_89826778.jpg?crop=1:1,smart&width=1200&height=1200&upscale=true",
          },
+         comments: [
+            { name: "Alex", text: "Lorem ipsum dolor sit amet, consectetur" },
+            { name: "Sanya", text: "Lorem ipsum dolor sit amet, consectetur" },
+         ],
       };
    },
 };
@@ -50,6 +52,6 @@ export default {
    }
 }
 .post-body {
-   text-align: left; 
+   text-align: left;
 }
 </style>
