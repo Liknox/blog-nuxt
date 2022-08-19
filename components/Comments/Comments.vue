@@ -26,7 +26,7 @@ export default {
    padding: 20px;
    background-color: #fff;
    margin: 0 auto 20px auto;
-   border-radius: 20px;
+   border-radius: 10px;
    width: 760px;
    .name {
       margin-bottom: 12px;
