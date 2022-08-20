@@ -13,22 +13,13 @@
                <AppButton class="btnWhite">Submit !</AppButton>
             </div>
          </form>
+         
       </div>
    </section>
 </template>
 
 <script>
-import Message from "@/components/UI/Message.vue";
-import AppButton from "@/components/UI/Controls/Button.vue";
-import AppInput from "@/components/UI/Controls/Input.vue";
-import AppTextArea from "@/components/UI/Controls/TextArea.vue";
 export default {
-   components: {
-      AppButton,
-      AppInput,
-      AppTextArea,
-      Message,
-   },
    data() {
       return {
          message: null,
