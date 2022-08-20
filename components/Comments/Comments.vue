@@ -28,10 +28,17 @@ export default {
    margin: 0 auto 20px auto;
    border-radius: 10px;
    width: 760px;
+   transition: all 0.15s cubic-bezier(0.02, 0.01, 0.47, 1);
+   box-shadow: 0 30px 30px rgba(0, 0, 0, 0.02);
    .name {
       margin-bottom: 12px;
       font-size: 24px;
       color: #5c4de7;
+   }
+   &:hover {
+      box-shadow: 0 30px 30px rgba(0, 0, 0, 0.04);
+      transform: translate(0, -8px);
+      transition-delay: 0s !important;
    }
 }
 h2.title {
