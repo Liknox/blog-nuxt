@@ -1,15 +1,15 @@
 <template>
    <section class="new-post">
       <div class="container">
-         <form>
+         <form @submit.prevent>
             <AppInput v-model="post.title">Title:</AppInput>
             <AppInput v-model="post.descr">Description:</AppInput>
             <AppInput v-model="post.img">Img Link:</AppInput>
             <AppTextArea v-model="post.content">Content: </AppTextArea>
 
             <div class="controls">
-               <AppButton class="btnDanger">Cancel</AppButton>
-               <AppButton>Save</AppButton>
+               <AppButton class="btnDanger" @click="cancel">Cancel</AppButton>
+               <AppButton @click="onSubmit">Save</AppButton>
             </div>
          </form>
       </div>
@@ -27,6 +27,14 @@ export default {
             content: "",
          },
       };
+   },
+   methods: {
+      cancel() {
+         this.$router.push("/admin");
+      },
+      onSubmit() {
+         this.$emit("submit", this.post);
+      },
    },
 };
 </script>
