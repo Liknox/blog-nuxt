@@ -2,7 +2,7 @@
    <newPostForm @submit="onSubmit" />
 </template>
 <script>
-import newPostForm from "@/components/admin/NewPostForm.vue";
+import newPostForm from "@/components/Admin/NewPostForm.vue";
 export default {
    components: { newPostForm },
    layout: "admin",
