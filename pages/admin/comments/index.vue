@@ -13,10 +13,14 @@
                <span v-else class="status false">Hiden</span>
             </td>
             <td>
-               <span @click="changeComment(comment.id)" class="link">Change Status</span>
+               <span @click="changeComment(comment.id)" class="link"
+                  >Change Status</span
+               >
             </td>
             <td>
-               <span @click="deleteComment(comment.id)" class="link">Delete</span>
+               <span @click="deleteComment(comment.id)" class="link"
+                  >Delete</span
+               >
             </td>
          </tr>
       </tbody>
@@ -46,6 +50,12 @@ export default {
       };
    },
    methods: {
+      changeComment(id) {
+         console.log(`Change comment id - ${id}`);
+      },
+      deleteComment(id) {
+         console.log(`Delete comment id - ${id}`);
+      },
    },
 };
 </script>
