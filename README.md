@@ -1,6 +1,6 @@
 ## How to setup this project
 
-```
+```bash
 # install dependencies
 $ npm install
 
