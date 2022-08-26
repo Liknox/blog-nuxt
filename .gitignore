@@ -90,3 +90,6 @@ sw.*
 *.swp
 
 *.md
+
+# Json Settings
+settings.json
