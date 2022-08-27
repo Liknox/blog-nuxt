@@ -1,3 +1,3 @@
 export default function (contex) {
-	console.log(contex)
+	console.log("auth")
 }
