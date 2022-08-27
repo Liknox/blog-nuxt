@@ -1,17 +1,17 @@
 <template>
-   <newPostForm @submit="onSubmit" />
+	<newPostForm @submit="onSubmit" />
 </template>
 <script>
-import newPostForm from "@/components/Admin/NewPostForm.vue";
+import newPostForm from "@/components/Admin/NewPostForm.vue"
 export default {
-   components: { newPostForm },
-   layout: "admin",
-   methods: {
-      onSubmit(post) {
-         // console.log("Post added!");
-         // console.log(post);
-       
-      },
-   },
-};
+	components: { newPostForm },
+	layout: "admin",
+	methods: {
+		onSubmit(post) {
+			this.$store.dispatch("addPost", post).then(() => {
+				this.$router.push("/admin")
+			})
+		},
+	},
+}
 </script>
