@@ -8,8 +8,9 @@ export default {
    layout: "admin",
    methods: {
       onSubmit(post) {
-         console.log("Post added!");
-         console.log(post);
+         // console.log("Post added!");
+         // console.log(post);
+       
       },
    },
 };
