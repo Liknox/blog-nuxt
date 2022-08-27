@@ -2,7 +2,7 @@
 	<div class="wrapper-content wrapper-content--fixed">
 		<promo />
 		<Intro title="My last posts: " />
-		<PostsList :posts="posts" />
+		<PostsList :posts="postsLoaded" />
 		<contacts />
 	</div>
 </template>
@@ -15,27 +15,27 @@ export default {
 		promo,
 		contacts,
 	},
-	asyncData(contex) {
-		return new Promise((resolve, reject) => {
-			setTimeout(() => {
-				resolve({
-					posts: [
-						{
-							id: 1,
-							title: "1 post",
-							descr: "Lorem ipsum dolor sit amet, consectetur adipiscing elit",
-							img: "https://images.newscientist.com/wp-content/uploads/2022/02/24145845/SEI_89826778.jpg?crop=1:1,smart&width=1200&height=1200&upscale=true",
-						},
-					],
-				})
-			}, 1500)
-		}).then((data) => {
-			return data
-		})
-      .catch(e => {
-         contex.error(e)
-      })
-	},
+	// asyncData(contex) {
+	// 	return new Promise((resolve, reject) => {
+	// 		setTimeout(() => {
+	// 			resolve({
+	// 				posts: [
+	// 					{
+	// 						id: 1,
+	// 						title: "1 post",
+	// 						descr: "Lorem ipsum dolor sit amet, consectetur adipiscing elit",
+	// 						img: "https://images.newscientist.com/wp-content/uploads/2022/02/24145845/SEI_89826778.jpg?crop=1:1,smart&width=1200&height=1200&upscale=true",
+	// 					},
+	// 				],
+	// 			})
+	// 		}, 1500)
+	// 	}).then((data) => {
+	// 		return data
+	// 	})
+   //    .catch(e => {
+   //       contex.error(e)
+   //    })
+	// },
 	data() {
 		return {
 			posts: [
@@ -60,6 +60,11 @@ export default {
 			],
 		}
 	},
+   computed: {
+      postsLoaded() {
+         return this.$store.getters.getPostsLoaded
+      }
+   }
 }
 </script>
 
