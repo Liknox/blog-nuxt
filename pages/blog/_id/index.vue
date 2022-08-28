@@ -10,6 +10,7 @@
 import post from "@/components/Blog/Post.vue";
 import newComment from "@/components/Comments/NewComment.vue";
 import comments from "@/components/Comments/Comments.vue";
+
 export default {
    components: {
       post,
