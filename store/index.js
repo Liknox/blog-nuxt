@@ -24,6 +24,9 @@ export const mutations = {
 	setToken(state, token) {
 		state.token = token
 	},
+	destroyToken(state) {
+		state.token = null
+	},
 }
 
 export const actions = {
@@ -54,6 +57,9 @@ export const actions = {
 			})
 			.catch((e) => console.log(e))
 	},
+	logoutUser({ commit }) {
+		commit("destroyToken")
+	},
 	addPost({ commit }, post) {
 		return axios
 			.post("https://blog-nuxt-c3be8-default-rtdb.europe-west1.firebasedatabase.app/posts.json", post)
@@ -63,9 +69,9 @@ export const actions = {
 			})
 			.catch((e) => console.log(e))
 	},
-	editPost({ commit, state}, post) {
+	editPost({ commit, state }, post) {
 		return axios
-			.put(`https://blog-nuxt-c3be8-default-rtdb.europe-west1.firebasedatabase.app/posts/${post.id}.json?auth=${state.token}`, post)
+			.put(`https://blog-nuxt-c3be8-default-rtdb.europe-west1.firebasedatabase.app/posts/${post.id}.json`, post)
 			.then((res) => {
 				commit("editPost", post)
 			})
@@ -88,7 +94,7 @@ export const getters = {
 	getPostsLoaded(state) {
 		return state.postsLoaded
 	},
-   checkAuthUser(state) {
-      return state.token != null
-   }
+	checkAuthUser(state) {
+		return state.token != null
+	},
 }
