@@ -17,11 +17,16 @@
 </template>
 
 <script>
-import axios from "axios"
 export default {
+	props: {
+		postId: {
+			type: String,
+			require: true,
+		},
+	},
 	data() {
 		return {
-			message: "",
+			message: null,
 			comment: {
 				name: "",
 				text: "",
@@ -32,7 +37,7 @@ export default {
 		onSubmit() {
 			this.$store
 				.dispatch("addComment", {
-					postId: "",
+					postId: this.postId,
 					publish: false,
 					...this.comment,
 				})

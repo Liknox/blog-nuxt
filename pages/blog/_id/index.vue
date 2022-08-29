@@ -2,7 +2,7 @@
 	<div class="wrapper-content wrapper-content--fixed">
 		<post :post="post" />
 		<comments :comments="comments" />
-		<newComment />
+		<newComment :postId="$route.params.id" />
 	</div>
 </template>
 
@@ -15,15 +15,12 @@ import comments from "@/components/Comments/Comments.vue"
 export default {
 	components: { post, comments, newComment },
 	async asyncData(context) {
-      let [post, comments] = await Promise.all([
-         axios.get(`https://blog-nuxt-c3be8-default-rtdb.europe-west1.firebasedatabase.app/posts/${context.params.id}.json`),
-         axios.get(`https://blog-nuxt-c3be8-default-rtdb.europe-west1.firebasedatabase.app/comments.json`)
-      ])
-      return {
-         post: post.data,
-         comments: comments.data
-      }
-   },
+		let [post, comments] = await Promise.all([axios.get(`https://blog-nuxt-c3be8-default-rtdb.europe-west1.firebasedatabase.app/posts/${context.params.id}.json`), axios.get(`https://blog-nuxt-c3be8-default-rtdb.europe-west1.firebasedatabase.app/comments.json`)])
+		return {
+			post: post.data,
+			comments: comments.data,
+		}
+	},
 	// data() {
 	//    return {
 	//       post: {
