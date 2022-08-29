@@ -2,7 +2,7 @@
 	<div class="wrapper-content wrapper-content--fixed">
 		<post :post="post" />
 		<comments :comments="comments" />
-		<newComment />
+		<newComment :postId="$route.params.id" />
 	</div>
 </template>
 
@@ -15,31 +15,25 @@ import comments from "@/components/Comments/Comments.vue"
 export default {
 	components: { post, comments, newComment },
 	async asyncData(context) {
-      let [post, comments] = await Promise.all([
-         axios.get(`https://blog-nuxt-c3be8-default-rtdb.europe-west1.firebasedatabase.app/posts/${context.params.id}.json`),
-         axios.get(`https://blog-nuxt-c3be8-default-rtdb.europe-west1.firebasedatabase.app/comments.json`)
-      ])
-      return {
-         post: post.data,
-         comments: comments.data
-      }
-   },
-	// data() {
-	//    return {
-	//       post: {
-	//          id: 1,
-	//          title: "1 post",
-	//          descr: "Lorem ipsum dolor sit amet, consectetur adipiscing elit",
-	//          content:
-	//             "Lorem ipsum dolor sit amet, consectetur adipiscing elit.Lorem ipsum dolor sit amet, consectetur adipiscing elit.Lorem ipsum dolor sit amet, consectetur adipiscing elit",
-	//          img: "https://images.newscientist.com/wp-content/uploads/2022/02/24145845/SEI_89826778.jpg?crop=1:1,smart&width=1200&height=1200&upscale=true",
-	//       },
-	//       comments: [
-	//          { name: "Alex", text: "Lorem ipsum dolor sit amet, consectetur" },
-	//          { name: "Sanya", text: "Lorem ipsum dolor sit amet, consectetur" },
-	//       ],
-	//    };
-	// },
+		let [post, comments] = await Promise.all([axios.get(`https://blog-nuxt-c3be8-default-rtdb.europe-west1.firebasedatabase.app/posts/${context.params.id}.json`), axios.get(`https://blog-nuxt-c3be8-default-rtdb.europe-west1.firebasedatabase.app/comments.json`)])
+
+		let commentsArray = [],
+			commentsArrayRes = []
+		Object.keys(comments.data).forEach((key) => {
+			commentsArray.push(comments.data[key])
+		})
+
+		for (let i = 0; i < commentsArray.length; i++) {
+			if (commentsArray[i].postId === context.params.id && commentsArray[i].publish === true) {
+				commentsArrayRes.push(commentsArray[i])
+			}
+		}
+		// let commentsArrayRes = Object.values(comments.data).filter(comment => (comment.postId === context.params.id) && comment.publish)
+		return {
+			post: post.data,
+			comments: commentsArrayRes,
+		}
+	},
 }
 </script>
 
