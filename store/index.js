@@ -2,7 +2,7 @@ import axios from "axios"
 
 export const state = () => ({
 	postsLoaded: [],
-	commentsLoaded: [],
+	token: null,
 })
 
 export const mutations = {
@@ -17,9 +17,15 @@ export const mutations = {
 		const postIndex = state.postsLoaded.findIndex((post) => post.id === postEdit.id)
 		state.postsLoaded[postIndex] = postEdit
 	},
-	addComment(state, comment) {
-		console.log(comment)
-		state.commentsLoaded.push(comment)
+	// addComment(state, comment) {
+	// 	console.log(comment)
+	// 	state.commentsLoaded.push(comment)
+	// },
+	setToken(state, token) {
+		state.token = token
+	},
+	destroyToken(state) {
+		state.token = null
 	},
 }
 
@@ -38,6 +44,22 @@ export const actions = {
 			})
 			.catch((e) => console.log(e))
 	},
+	authUser({ commit }, authData) {
+		const key = "AIzaSyBZiNbImHLSNA4jyMtOQELSqyXsypz4bng"
+		return axios
+			.post(`https://identitytoolkit.googleapis.com/v1/accounts:signInWithPassword?key=${key}`, {
+				email: authData.email,
+				password: authData.password,
+				returnSecureToken: false,
+			})
+			.then((res) => {
+				commit("setToken", res.data.idToken)
+			})
+			.catch((e) => console.log(e))
+	},
+	logoutUser({ commit }) {
+		commit("destroyToken")
+	},
 	addPost({ commit }, post) {
 		return axios
 			.post("https://blog-nuxt-c3be8-default-rtdb.europe-west1.firebasedatabase.app/posts.json", post)
@@ -47,7 +69,7 @@ export const actions = {
 			})
 			.catch((e) => console.log(e))
 	},
-	editPost({ commit }, post) {
+	editPost({ commit, state }, post) {
 		return axios
 			.put(`https://blog-nuxt-c3be8-default-rtdb.europe-west1.firebasedatabase.app/posts/${post.id}.json`, post)
 			.then((res) => {
@@ -56,18 +78,23 @@ export const actions = {
 			.catch((e) => console.log(e))
 	},
 	addComment({ commit }, comment) {
-		return axios
-			.post("https://blog-nuxt-c3be8-default-rtdb.europe-west1.firebasedatabase.app/comments.json", comment)
-			.then((res) => {
-				// console.log(res);
-				commit("addComment", { ...comment, id: res.data.name })
-			})
-			.catch((e) => console.log(e))
+		return (
+			axios
+				.post("https://blog-nuxt-c3be8-default-rtdb.europe-west1.firebasedatabase.app/comments.json", comment)
+				// .then((res) => {
+				// 	// console.log(res);
+				// 	commit("addComment", { ...comment, id: res.data.name })
+				// })
+				.catch((e) => console.log(e))
+		)
 	},
 }
 
 export const getters = {
 	getPostsLoaded(state) {
 		return state.postsLoaded
+	},
+	checkAuthUser(state) {
+		return state.token != null
 	},
 }
