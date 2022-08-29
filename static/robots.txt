@@ -1,0 +1,11 @@
+User-agent: *
+Disallow: /admin/ 
+Disallow: /*.pdg 
+Disallow: /*.doc 
+Disallow: /*?* 
+
+User-agent: Goolebot
+Disallow: /admin/ 
+Disallow: /*.pdg 
+Disallow: /*.doc 
+Disallow: /*?*
