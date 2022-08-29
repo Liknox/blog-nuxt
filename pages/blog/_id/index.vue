@@ -28,7 +28,7 @@ export default {
 				commentsArrayRes.push(commentsArray[i])
 			}
 		}
-
+		// let commentsArrayRes = Object.values(comments.data).filter(comment => (comment.postId === context.params.id) && comment.publish)
 		return {
 			post: post.data,
 			comments: commentsArrayRes,
