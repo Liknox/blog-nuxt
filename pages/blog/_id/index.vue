@@ -14,6 +14,20 @@ import comments from "@/components/Comments/Comments.vue"
 
 export default {
 	components: { post, comments, newComment },
+	head() {
+		let title = this.post.title,
+			descr = this.post.descr,
+			img = this.post.img,
+			type = "article"
+		return {
+			title: title,
+			meta: [{ hid: "og:title", name: "og:title", content: title }],
+			meta: [{ hid: "description", name: "description", content: descr }],
+			meta: [{ hid: "og:description", name: "og:description", content: descr }],
+			meta: [{ hid: "og:type", name: "og:type", content: type }],
+			meta: [{ hid: "og:img", name: "og:img", content: img }],
+		}
+	},
 	async asyncData(context) {
 		let [post, comments] = await Promise.all([axios.get(`https://blog-nuxt-c3be8-default-rtdb.europe-west1.firebasedatabase.app/posts/${context.params.id}.json`), axios.get(`https://blog-nuxt-c3be8-default-rtdb.europe-west1.firebasedatabase.app/comments.json`)])
 
