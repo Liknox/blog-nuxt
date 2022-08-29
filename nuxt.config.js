@@ -5,11 +5,9 @@ export default {
 		htmlAttrs: {
 			lang: "en",
 		},
-		meta: [{charset: "utf-8"},
-         {name: "viewport", content: "width=device-width, initial-scale=1"},
-         {name: "format-detection", content: "telephone=no"}],
+		meta: [{ charset: "utf-8" }, { name: "viewport", content: "width=device-width, initial-scale=1" }, { name: "format-detection", content: "telephone=no" }],
 		link: [
-			{rel: "icon", type: "image/x-icon", href: "/favicon.ico"},
+			{ rel: "icon", type: "image/x-icon", href: "/favicon.ico" },
 			{
 				rel: "stylesheet",
 				href: "https://fonts.googleapis.com/css2?family=Montserrat&display=swap",
@@ -18,7 +16,7 @@ export default {
 	},
 
 	// Global CSS: https://go.nuxtjs.dev/config-css
-	css: [{src: "~/assets/scss/main.scss", lang: "scss"}],
+	css: [{ src: "~/assets/scss/main.scss", lang: "scss" }],
 
 	// Plugins to run before rendering page: https://go.nuxtjs.dev/config-plugins
 	plugins: ["~plugins/app-components.js"],
@@ -30,7 +28,11 @@ export default {
 	buildModules: [],
 
 	// Modules: https://go.nuxtjs.dev/config-modules
-	modules: [],
+	modules: [
+		// ['@nuxtjs/google-analytics', {
+		//    id: "UA-1234-1"
+		// }]
+	],
 
 	// Build Configuration: https://go.nuxtjs.dev/config-build
 	build: {},
