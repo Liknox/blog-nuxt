@@ -24,8 +24,13 @@ export default {
 	},
 	methods: {
 		onSubmit() {
-			this.user.email = ""
-			this.user.password = ""
+			this.$store.dispatch("authUser", this.user)
+         .then((res) => {
+				console.log(res)
+
+				this.user.email = ""
+				this.user.password = ""
+			})
 		},
 	},
 }
