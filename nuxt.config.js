@@ -1,7 +1,10 @@
+import axios from "axios"
+import pkg from "./package"
+
 export default {
 	// Global page headers: https://go.nuxtjs.dev/config-head
 	head: {
-		title: "Blog",
+		title: pkg.name,
 		htmlAttrs: {
 			lang: "en",
 		},
@@ -36,6 +39,20 @@ export default {
 
 	// Build Configuration: https://go.nuxtjs.dev/config-build
 	build: {},
+	generate: {
+		routes() {
+			return axios.get("https://blog-nuxt-c3be8-default-rtdb.europe-west1.firebasedatabase.app/posts.json").then((res) => {
+				const postsArray = []
+				for (let key in res.data) {
+					postsArray.push({ ...res.data[key], id: key })
+				}
+
+				return postsArray.map((post) => {
+					return "/blog/" + post.id
+				})
+			})
+		},
+	},
 	server: {
 		port: 3000,
 	},
