@@ -34,6 +34,7 @@ export const actions = {
 		return axios
 			.get("https://blog-nuxt-c3be8-default-rtdb.europe-west1.firebasedatabase.app/posts.json")
 			.then((res) => {
+            
 				const postsArray = []
 				for (let key in res.data) {
 					postsArray.push({ ...res.data[key], id: key })
