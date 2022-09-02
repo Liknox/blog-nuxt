@@ -1,6 +1,7 @@
 // тк мы к ним обращаемся везде ниже
 @import "utils/vars";
 @import "utils/reset";
+@import "utils/animation";
 
 html {
   line-height: $mainLineHeight;
@@ -97,4 +98,3 @@ section, .section {
 }
 
 @import "./common";
-@import "./index";
