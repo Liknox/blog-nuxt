@@ -19,7 +19,7 @@
 import Header from "@/components/system/Header.vue"
 export default {
 	components: { Header },
-	middleware: ["auth-check", "auth"],
+	middleware: ["auth"],
 	methods: {
 		logoutUser() {
 			this.$store.dispatch("logoutUser").then(() => {

@@ -1,11 +1,6 @@
 <template>
 	<section class="auth">
 		<div class="container">
-			<div class="auth-preview">
-				<h1>Login Data:</h1>
-            <p><strong>Login:</strong> nazarkoval@gmail.com</p>
-            <p><strong>Password:</strong> 12345678</p>
-			</div>
 			<form @submit.prevent="onSubmit" class="auth-form">
 				<AppInput type="email" v-model="user.email">Login:</AppInput>
 				<AppInput type="password" v-model="user.password">Password:</AppInput>
@@ -50,27 +45,16 @@ export default {
 <style lang="scss">
 .auth {
 	text-align: center;
-	&-preview {
-		margin-top: 50px; 
-		h1 {
-			font-size: 30px;
-			font-weight: bold !important;
-		}
-      p {
-         padding-top: 5px;
-         font-size: 20px;
-      }
-	}
-	&-form {
-		display: flex;
-		align-items: center;
-		justify-content: center;
-		flex-direction: column;
-		width: 100%;
-		height: 50vh;
-		input {
-			min-width: 460px;
-		}
+}
+.auth-form {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	flex-direction: column;
+	width: 100%;
+	height: 80vh;
+	input {
+		min-width: 460px;
 	}
 }
 </style>
