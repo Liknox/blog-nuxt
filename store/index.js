@@ -60,15 +60,15 @@ export const actions = {
 			.catch((e) => console.log(e))
 	},
 	initAuth({ commit }) {
-      let token = localStorage.getItem("token")
-      if (!token) {
-         return false
-      }
-      commit("setToken", token)
-   },
+		let token = localStorage.getItem("token")
+		if (!token) {
+			return false
+		}
+		commit("setToken", token)
+	},
 	logoutUser({ commit }) {
 		commit("destroyToken")
-      localStorage.removeItem("token")
+		localStorage.removeItem("token")
 	},
 	addPost({ commit }, post) {
 		return axios
