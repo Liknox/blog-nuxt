@@ -34,7 +34,6 @@ export const actions = {
 		return axios
 			.get("https://blog-nuxt-c3be8-default-rtdb.europe-west1.firebasedatabase.app/posts.json")
 			.then((res) => {
-            
 				const postsArray = []
 				for (let key in res.data) {
 					postsArray.push({ ...res.data[key], id: key })
@@ -54,12 +53,22 @@ export const actions = {
 				returnSecureToken: false,
 			})
 			.then((res) => {
-				commit("setToken", res.data.idToken)
+				let token = res.data.idToken
+				commit("setToken", token)
+				localStorage.setItem("token", token)
 			})
 			.catch((e) => console.log(e))
 	},
+	initAuth({ commit }) {
+      let token = localStorage.getItem("token")
+      if (!token) {
+         return false
+      }
+      commit("setToken", token)
+   },
 	logoutUser({ commit }) {
 		commit("destroyToken")
+      localStorage.removeItem("token")
 	},
 	addPost({ commit }, post) {
 		return axios
