@@ -1,3 +1,5 @@
 export default function (contex) {
-contex.store.dispatch("initAuth")
+	if (process.client) {
+		contex.store.dispatch("initAuth")
+	}
 }
