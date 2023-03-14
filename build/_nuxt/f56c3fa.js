@@ -1,0 +1,1 @@
+(window.webpackJsonp=window.webpackJsonp||[]).push([[13],{357:function(t,o,e){"use strict";e.r(o);var n={layout:"admin",computed:{postsLoaded:function(){return this.$store.getters.getPostsLoaded}}},d=e(8),component=Object(d.a)(n,(function(){return(0,this._self._c)("PostsList",{attrs:{admin:!0,posts:this.postsLoaded}})}),[],!1,null,null,null);o.default=component.exports}}]);
