@@ -4,7 +4,7 @@
 			<div class="auth-preview">
 				<h1>Login Data:</h1>
 				<p><strong>Login:</strong> nazarkoval@gmail.com</p>
-				<p><strong>Password:</strong> 12345678</p>
+				<p><strong>Password:</strong> ********</p>
 			</div>
 			<form @submit.prevent="onSubmit" class="auth-form">
 				<AppInput type="email" v-model="user.email">Login:</AppInput>
