@@ -47,6 +47,7 @@ export default {
 	}
 	a {
 		margin: 10px;
+      color: #4f68f4;
 	}
    ul {
       font-size: 25px;
