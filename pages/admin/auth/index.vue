@@ -23,27 +23,27 @@ export default {
 		return {
 			user: {
 				email: "",
-				password: "",
-			},
+				password: ""
+			}
 		}
 	},
 	methods: {
 		onSubmit() {
 			this.$store
 				.dispatch("authUser", this.user)
-				.then((res) => {
+				.then(res => {
 					this.$router.push("/admin")
 
 					// this.user.email = ""
 					// this.user.password = ""
 				})
-				.catch((e) => {
+				.catch(e => {
 					console.log(e)
 					this.user.email = ""
 					this.user.password = ""
 				})
-		},
-	},
+		}
+	}
 }
 </script>
 
@@ -71,6 +71,12 @@ export default {
 		input {
 			min-width: 460px;
 		}
+	}
+}
+
+@media (max-width: 400px) {
+	.auth-form input {
+		min-width: 300px;
 	}
 }
 </style>

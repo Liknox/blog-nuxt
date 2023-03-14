@@ -32,4 +32,10 @@ export default {
 	justify-content: space-around;
 	flex-wrap: wrap;
 }
+
+@media (max-width: 400px) {
+   .posts__wrapper {
+      flex-direction: column;
+   }
+}
 </style>
