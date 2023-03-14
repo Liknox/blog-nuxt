@@ -74,9 +74,12 @@ export default {
 	}
 }
 
-@media (max-width: 400px) {
+@media (max-width: 430px) {
 	.auth-form input {
 		min-width: 300px;
+	}
+	.auth-preview {
+		margin-top: 70px;
 	}
 }
 </style>

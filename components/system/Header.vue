@@ -20,7 +20,6 @@ export default {
 	data() {
 		return {
 			links: [
-				{ title: "Blog", url: "/blog" },
 				{ title: "About", url: "/about" },
 				{ title: "Admin", url: "/admin" }
 			]
@@ -37,5 +36,13 @@ export default {
 	&.nuxt-link-exact-active {
 		color: #4165de;
 	}
+}
+@media (max-width: 430px) {
+   .navbar {
+      width: 100vw;
+      .container {
+         max-width: 300px
+      }
+   }
 }
 </style>

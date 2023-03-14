@@ -50,4 +50,11 @@ h2.title {
 	text-align: center;
 	margin-bottom: 30px;
 }
+@media (max-width: 430px) {
+   .container {
+      .comment {
+         width: 100%;
+      }
+   }
+}
 </style>

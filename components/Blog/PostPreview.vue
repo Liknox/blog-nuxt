@@ -43,7 +43,7 @@ export default {
       color: #999;
    }
 }
-@media (max-width: 400px) {
+@media (max-width: 430px) {
    .post-preview {
       width: 100%;
    }

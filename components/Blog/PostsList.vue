@@ -33,7 +33,7 @@ export default {
 	flex-wrap: wrap;
 }
 
-@media (max-width: 400px) {
+@media (max-width: 430px) {
    .posts__wrapper {
       flex-direction: column;
    }

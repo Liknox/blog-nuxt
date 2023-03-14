@@ -26,9 +26,9 @@ export default {
 </script>
 
 <style lang="scss">
-@media (max-width: 400px) {
+@media (max-width: 430px) {
 	.post-header img {
-		max-width: 100%;
+		max-width: 300px !important;
 	}
 	.comment {
 		width: 100%;

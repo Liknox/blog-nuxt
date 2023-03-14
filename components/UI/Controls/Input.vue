@@ -24,3 +24,13 @@ export default {
 }
 </script>
 
+<style lang="scss">
+   .control {
+      input {
+         height: 40px;
+      }
+      textarea {
+         height: 70px;
+      }
+   }
+</style>
